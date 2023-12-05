@@ -29,9 +29,16 @@ int _printf(const char *format, ...)
 		else
 		{
 			format++;//if % sign found, check next character
-			if(*format == 'c')
+			if(*format == '%')
 			{
 				write(1, format, 1);
+				count++;
+			}
+			else if(*format == 'c')
+			{
+				char c = va_arg(arguments, char);
+				write(1, &c, 1);
+				count++;
 			}
 		}
 	}
