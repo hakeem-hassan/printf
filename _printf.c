@@ -36,7 +36,7 @@ int _printf(const char *format, ...)
 			}
 			else if (*format == 'c')
 			{
-				char c = va_arg(arguments, char);
+				char c = va_arg(arguments, int);
 
 				write(1, &c, 1);
 				count++;
