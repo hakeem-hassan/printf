@@ -20,23 +20,24 @@ int _printf(const char *format, ...)
 	}
 	va_start(arguments, format);
 
-	while(*format)
+	while (*format)
 	{
-		if(*format != '%')
+		if (*format != '%')
 		{
 			write(1, format, 1);
 		}
 		else
 		{
-			format++;//if % sign found, check next character
-			if(*format == '%')
+			format++; /*if % sign found, check next character*/
+			if (*format == '%')
 			{
 				write(1, format, 1);
 				count++;
 			}
-			else if(*format == 'c')
+			else if (*format == 'c')
 			{
 				char c = va_arg(arguments, char);
+
 				write(1, &c, 1);
 				count++;
 			}
