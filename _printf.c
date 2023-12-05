@@ -18,4 +18,22 @@ int _printf(const char *format, ...)
 	{
 		return (-1);
 	}
+	va_start(arguments, format);
+
+	while(*format)
+	{
+		if(*format != '%')
+		{
+			write(1, format, 1);
+		}
+		else
+		{
+			format++;//if % sign found, check next character
+			if(*format == 'c')
+			{
+				write(1, format, 1);
+			}
+		}
+	}
+
 }
