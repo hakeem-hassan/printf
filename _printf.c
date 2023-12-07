@@ -8,7 +8,6 @@
  * return  always 0 on success.
  * on error -1 is returned.
  */
-void _print_s(char *string);
 
 int _printf(const char *format, ...)
 {
@@ -16,59 +15,36 @@ int _printf(const char *format, ...)
 	va_list arguments;
 
 	if (format == NULL)
-	{
 		return (-1);
-	}
+
 	va_start(arguments, format);
 
 	while (*format)
 	{
 		if (*format != '%')
-		{
 			write(1, format, 1);
-		}
 		else
 		{
 			format++; /*if % sign found, check next character*/
+			if (*format == '\0')
+				break;
 			if (*format == '%')
-			{
 				write(1, format, 1);
 				count++;
-			}
 			else if (*format == 'c')
-			{
 				char c = va_arg(arguments, int);
 
 				write(1, &c, 1);
 				count++;
-			}
 			else if (*format == 's')
-			{
 				char *string = va_arg(arguments, char*);
 
 				_print_s(string);
-			}
+			else if (*format == 'i')
+				int *num = va_arg(arguments, int*);
 
-			if (*format == '\0')
-			{
-				break;
-			}
+				_print_i(num);
 		}
 	}
 return (0);
-}
-/*
- * _print_s - prints string
- *
- * return: none
- */
-void _print_s(char *string)
-{
-	int len = 0;
-
-	while (string[len] != '\0')
-	{
-		len++;
-		write(1, string, len);
-	}
 }
