@@ -8,6 +8,7 @@
  * return  always 0 on success.
  * on error -1 is returned.
  */
+void _print_s(char *string);
 
 int _printf(const char *format, ...)
 {
@@ -41,7 +42,33 @@ int _printf(const char *format, ...)
 				write(1, &c, 1);
 				count++;
 			}
+			else if (*format == 's')
+			{
+				char *string = va_arg(arguments, char*);
+
+				_print_s(string);
+			}
+
+			if (*format == '\0')
+			{
+				break;
+			}
 		}
 	}
 return (0);
+}
+/*
+ * _print_s - prints string
+ *
+ * return: none
+ */
+void _print_s(char *string)
+{
+	int len = 0;
+
+	while (string[len] != '\0')
+	{
+		len++;
+		write(1, string, len);
+	}
 }
