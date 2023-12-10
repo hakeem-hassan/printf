@@ -5,6 +5,6 @@
 #include <unistd.h>
 
 int _printf(const char *format, ...);
-void _print_i(int *num);
-void _print_s(char string);
+void _print_i(int num);
+void _print_s(char *string);
 #endif

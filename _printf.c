@@ -27,23 +27,33 @@ int _printf(const char *format, ...)
 		{
 			format++; /*if % sign found, check next character*/
 			if (*format == '\0')
+			{
 				break;
+			}
 			if (*format == '%')
+			{
 				write(1, format, 1);
 				count++;
+			}
 			else if (*format == 'c')
+			{
 				char c = va_arg(arguments, int);
 
 				write(1, &c, 1);
 				count++;
+			}
 			else if (*format == 's')
+			{
 				char *string = va_arg(arguments, char*);
 
 				_print_s(string);
+			}
 			else if (*format == 'i')
-				int *num = va_arg(arguments, int*);
+			{
+				int num = va_arg(arguments, int);
 
 				_print_i(num);
+			}
 		}
 	}
 return (0);

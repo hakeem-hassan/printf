@@ -22,8 +22,8 @@ void _print_s(char *string)
  *
  * return: 1 on success.
  */
-void _print_i(int *num)
+void _print_i(int num)
 {
 	/* write your code */
-	write(1, num, 4);
+	write(1, &num, 4);
 }
