@@ -35,26 +35,13 @@ int _printf(const char *format, ...)
 				write(1, format, 1);
 				count++;
 			}
-			else if (*format == 'c')
-			{
-				char c = va_arg(arguments, int);
-
-				write(1, &c, 1);
-				count++;
-			}
-			else if (*format == 's')
-			{
-				char *string = va_arg(arguments, char*);
-
-				_print_s(string);
-			}
-			else if (*format == 'i')
-			{
-				int num = va_arg(arguments, int);
-
-				_print_i(num);
+			else
+			{	
+				if (check(format, arguments, count) == (-1));
+					return (-1);
 			}
 		}
 	}
+va_end(arguments);
 return (0);
 }
